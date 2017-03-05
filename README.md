@@ -91,10 +91,9 @@ Shardlib can generate specialized plots for analysis and visualization of data f
 
 
 - __Box Plots__ &mdash; distribution of the data and calculated errors.
-Box plots are used in three modes &mdash; a single record, multiple records and mixed mode.
-  - _single record mode_ &mdash; each box of the plot represents data from a single record.
-  - _multiple records mode_ &mdash; each box represents data collected from multiple records,
-  - _mixed records mode_ &mdash; the plot contains sections of multiple records box plot and sections of single mode box plots. The single record mode sections represent the records used to generate the selected box in multiple records mode sections.
+Box plots are used in two modes &mdash; a single record and multiple records.
+  - _single record mode_ &mdash; each box of the plot represents data from a single record;
+  - _multiple records mode_ &mdash; each box represents data collected from multiple records.
 
 - __Line Plots__ &mdash; plot of the data points from a single or multiple records.
 
