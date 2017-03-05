@@ -1,5 +1,7 @@
 # Shardlib
 
+[![Build Status](https://travis-ci.org/fracturica/shardlib.svg?branch=master)](https://travis-ci.org/fracturica/shardlib)
+
 **Shardlib is a collection of Python modules aimed at the analysis of Policrack databases. It provides the functionality for the Enrupture analysis framework.**
 
 Copyright &copy; 2012 - 2014, 2017 Dimitar Danov, Prof. Mario Guagliano
