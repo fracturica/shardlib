@@ -4,7 +4,8 @@
 
 **Shardlib is a collection of Python modules aimed at the analysis of Policrack databases. It provides the functionality for the Enrupture analysis framework.**
 
-Copyright &copy; 2012 - 2014, 2017 Dimitar Danov, Prof. Mario Guagliano
+Copyright &copy; 2012 - 2014, 2017 Dimitar Danov<br>
+Copyright &copy; 2012 - 2014, 2017 Prof. Mario Guagliano<br>
 Distributed under the terms of MIT License.
 
 
@@ -18,6 +19,7 @@ Shardlib has been used at a scale of 10s of thousands of database records.
 
 
 ## Features
+
 Shardlib provides the following functionality:
 - Database management system including:
   - database discovery;
@@ -33,12 +35,15 @@ Shardlib provides the following functionality:
 
 
 ### Database Management
-The main premise of the `shardlib` database management features is to provide an abstraction layer that presents the individual databases in a Policrack repository as a single database. It creates a unique id for each record called `simId`.
+
+The `shardlib` database management provides an abstraction layer that hides the complexity of dealing with multiple databases in a Policrack repository by presenting them as a single database.
+This is achieved by creating a unique id for each record called `simId`.
 
 A `simId` is a combination of the database name and the record key in the database. It solves two problems. First, of potential name collisions (database names are unique and record keys are unique within a database). Second, the system can easily identify the database in which the record is stored, without searching all databases.
 
 
 #### Database Discovery
+
 Shardlib looks for a Policrack database repository in a directory named `db`. The directory structure is as follows:
 <pre>root
 ├ db
@@ -51,22 +56,29 @@ The `db` directory is the Policrack database repository and `shardlib` is the di
 
 
 #### Index
-Shardlib can create an index of the discovered databases. The index is created at the beginning of every analysis and is not persistent between sessions.
+
+Shardlib can create an index (tree data structure) of the discovered databases. It is created at the beginning of every analysis and is not persistent between sessions.
+
 
 #### Queries
-Both table scan and index queries are supported and are distinguished from one another. The index is a tree structure and index queries are tree searches. The table scan queries scan all the databases.
+
+Both table scan and index queries are supported and distinguished from one another. Index queries are tree searches. Table scan queries scan all the databases.
 
 In practice, once the index is generated, most queries use a combination of both index search and table scan of a subset of the databases.
 
+
 #### Record Retrieval
+
 Record retrieval is performed using a `simId`, which contains the database name and the record key in the database.
 
 
 ### Data Transformation and Aggregation
+
 Shardlib can calculate estimates of a single record and filter its data. Data from multiple records can be combined and same filters and estimates can be applied to the aggregate data.
 
 
 ### Analytical Solutions
+
 Analytical solutions for stress intensity factors for an embedded elliptic crack under remote load use the definitions from:
 
 `B. Nuller, E. Karapetian, and M. Kachanov. On the stress intensity factor for the elliptical crack. International Journal
@@ -74,15 +86,18 @@ of Fracture, 92(2):15–20, 1998`
 
 
 ### Session Storage
-The session storage allows for persistent storage of `simId`s. Session storage addresses the following two scenarios.
-There may be some records that have passed the success criteria there is data associated with them, but we wish to exclude them from further considerations. Conversely, there may be records that we wish to store for further analysis.
+Session storage is a persistent storage of `simId`s. It addresses the following two scenarios:
+ - exclusion of records from further considerations without writing to the Policrack database.
+ - earmarking `simId`s for further analysis.
 
 
 ### Interactivity
-The interactivity feature is a non-persistent queue, to which certain `simId`s can be added, removed and retrieved in subsequent operations.
+
+The interactivity feature is a non-persistent queue, to which `simId`s can be added, removed and retrieved in subsequent operations.
 
 
 ### Plots
+
 Shardlib can generate specialized plots for analysis and visualization of data from a single database record or multiple records.
 
 - __Color Maps (Contour Plots)__ &mdash; container size convergence analysis.
@@ -105,22 +120,27 @@ Box plots are used in two modes &mdash; a single record and multiple records.
 
 
 ### Logging
+
 Most operations with `shardlib` use print statements to display feedback information.
 
 
 ## Installation
+
 The recommended approach is to install the library manually and vendorize the library. [Database discovery](#database-discovery) requires a certain directory structure to work.
 
 
 ## Security Warning
+
 Shardlib uses Python shelves for persistence and reads Policrack databases, which are also shelves.
 
 **Only use trusted sources for Policrack databases and `shardlib` persistence objects**
 
 
 ### Requirements
+
 Shardlib is designed to work with Python 2.7 and requires `numpy`, `scipy` and `matplotlib`.
 
 
 ## Further Development
+
 Shardlib does what we wanted it to do, when we started. It has been a positive experiment and we do not plan further updates at present.
